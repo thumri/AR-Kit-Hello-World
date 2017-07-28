@@ -17,6 +17,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -28,6 +29,33 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+     */
+        
+        // Container to hold all of the 3D geometry
+        let scene:SCNScene = SCNScene()
+        
+        // The 3D cube geometry we want to draw
+        let boxGeometry:SCNBox = SCNBox(
+                width:0.1,
+                height:0.1,
+                length:0.1,
+                chamferRadius:0.0
+        );
+        
+        // The node that wraps the geometry so we can add it to the scene
+        let boxNode:SCNNode = SCNNode(geometry:boxGeometry);
+        
+        // Position the box just in front of the camera
+        boxNode.position = SCNVector3Make(0, 0, -0.5);
+  
+        // rootNode is a special node, it is the starting point of all
+        // the items in the 3D scene
+        scene.rootNode.addChildNode(boxNode);
+        
+        // Set the scene to the view
+        self.sceneView.scene = scene;
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
