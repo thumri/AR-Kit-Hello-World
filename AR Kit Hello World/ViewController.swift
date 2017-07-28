@@ -54,7 +54,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         self.sceneView.scene = scene;
-        
+
+        // Add some lighting to show shading
+        sceneView.autoenablesDefaultLighting = true;
         
     }
     
